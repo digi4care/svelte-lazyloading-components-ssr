@@ -25,11 +25,11 @@ Trying to make the data reactive so i can tapp in to it and use it in an each bl
 1. install everything
 
 ```bash
-pnpm i
+(p)npm i
 ```
 
 2. start
 
 ```bash
-pnpm run dev
+(p)npm run dev
 ```
