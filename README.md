@@ -7,7 +7,7 @@ Example:
 // +page.server.js
 
 lets say we are fetching data from an external db.
-constructing an array with the component name and it's content if available.
+constructing an array with the component name and it's content, if some content is available.
 
 // +page.js
 
@@ -15,7 +15,7 @@ Here i am trying to import these components and put them in an array so i can pa
 
 // +page.svelte
 
-Trying to make the data reactive so i can tapp in to it in each block
+Trying to make the data reactive so i can tapp in to it and use it in an each block.
 
 ```$: ({ list, container } = data);```
 
