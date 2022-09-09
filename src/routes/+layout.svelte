@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.postcss';
-	import client from '../client';
 
 	client.init();
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
