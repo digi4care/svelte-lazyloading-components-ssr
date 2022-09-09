@@ -1,16 +1,3 @@
-<script context="module" lang="ts">
-	// let componentsList = ['AsyncComponent', 'AsyncComponentv2'];
-	// let componentsContainer = [];
-	// // let propsContainer = [];
-
-	// // componentsList.map((component, index) => {
-	// // 	import(/* @vite-ignore */ `../components/${component}.svelte`).then(
-	// // 		(res) => (componentsContainer[component] = res.default)
-	// // 	);
-	// // 	propsContainer[component] = `${index} Some data fetch from the backend`;
-	// // });
-</script>
-
 <script lang="ts">
 	import {
 		Alert,
@@ -32,11 +19,24 @@
 
 	let defaultModal;
 
-	$: ({ Continents, list, container } = data);
+	$: ({ list, container } = data);
 </script>
 
 <section class="block p-4 m-6">
 	<h2>Home</h2>
+
+	{#if !container}
+		<Skeleton />
+	{:else}
+		{#each list as component}
+			{#if container[component.comp]?.default}
+				<svelte:component
+					this={container[component.comp].default}
+					customProp={container[component.comp].props}
+				/>
+			{/if}
+		{/each}
+	{/if}
 	<Button on:click={() => (defaultModal = true)}>Default modal</Button>
 	<Modal title="Terms of Service" bind:open={defaultModal}>
 		<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -55,25 +55,4 @@
 			<Button color="alternative">Decline</Button>
 		</svelte:fragment>
 	</Modal>
-	{#if $Continents?.loadPending}
-		<Skeleton />
-	{:else}
-		<p>This is the home page, with the list of continents</p>
-		{#each $Continents?.data?.continents ?? [] as { code, name }}
-			<div class="block">{code} - {name}</div>
-		{/each}
-	{/if}
-
-	{#if !container}
-		<Skeleton />
-	{:else}
-		{#each list as component}
-			{#if container[component.comp]?.default}
-				<svelte:component
-					this={container[component.comp].default}
-					customProp={container[component.comp].props}
-				/>
-			{/if}
-		{/each}
-	{/if}
 </section>

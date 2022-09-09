@@ -1,6 +1,11 @@
-# Houdini starter kit for 0.16.0-next.x
+# svelte-lazyloading-components-ssr
 
-Just clone this repo and make it your own!
+Trying to figure out how to lazy/dynamicly import components while preserving SSR.
+
+I am using the 'Houdini starter kit for 0.16.0-next.x'
+
+Example:
+
 
 ---
 
@@ -22,4 +27,3 @@ pnpm run dev
 
 - [client.ts](./src/client.ts)
 - [houdini.config.js](./houdini.config.js)
-# svelte-lazyloading-components-ssr
